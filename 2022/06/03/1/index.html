@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="FXK的博客">
 <meta property="og:description" content="数据库复习2 关于《数据库系统概论》后7~11章内容的复习">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zyhhnu.online/.online//06/03/1/image-20220603165819839-1654254349207.png">
-<meta property="og:image" content="http://zyhhnu.online/.online//06/03/1/image-20220603170851466-1654254349208.png">
-<meta property="og:image" content="http://zyhhnu.online/.online//06/03/1/image-20220603173026077-1654254349208.png">
-<meta property="og:image" content="http://zyhhnu.online/.online//06/03/1/image-20220603183732478-1654254349208.png">
-<meta property="og:image" content="http://zyhhnu.online/.online//06/03/1/image-20220603184809366-1654254349208.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sQS6R.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sQECv.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sUQyJ.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sUUdF.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sUeKW.png">
 <meta property="article:published_time" content="2022-06-03T11:04:02.000Z">
-<meta property="article:modified_time" content="2022-06-03T11:13:33.691Z">
+<meta property="article:modified_time" content="2022-06-20T15:24:37.822Z">
 <meta property="article:author" content="FXK">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zyhhnu.online/.online//06/03/1/image-20220603165819839-1654254349207.png">
+<meta name="twitter:image" content="https://s1.328888.xyz/2022/06/20/sQS6R.png">
 
 <link rel="canonical" href="http://zyhhnu.online/2022/06/03/1/">
 
@@ -200,10 +200,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-06-03 19:04:02 / 修改时间：19:13:33" itemprop="dateCreated datePublished" datetime="2022-06-03T19:04:02+08:00">2022-06-03</time>
+              <time title="创建时间：2022-06-03 19:04:02" itemprop="dateCreated datePublished" datetime="2022-06-03T19:04:02+08:00">2022-06-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-20 23:24:37" itemprop="dateModified" datetime="2022-06-20T23:24:37+08:00">2022-06-20</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -442,7 +448,9 @@
 <h2 id="并发操作带来的数据不一致性类型"><a href="#并发操作带来的数据不一致性类型" class="headerlink" title="并发操作带来的数据不一致性类型"></a>并发操作带来的数据不一致性类型</h2><blockquote>
 <p>丢失修改、不可重复读、读”脏”数据</p>
 </blockquote>
-<img src="/.online//06/03/1/image-20220603165819839-1654254349207.png" class title="image-20220603165819839">
+<img src="https://s1.328888.xyz/2022/06/20/sQS6R.png" alt="sQS6R.png" border="0" />
+
+
 
 
 
@@ -460,7 +468,9 @@
 <h2 id="三级封锁协议"><a href="#三级封锁协议" class="headerlink" title="三级封锁协议"></a>三级封锁协议</h2><p>一级封锁协议：事务T在修改数据R之前必须对其加X锁，直到事务结束才释放</p>
 <p>二级封锁协议：在一级封锁协议的基础上，增加事务T在读取数据R前必须先对其加S锁，读完后即可释放S锁</p>
 <p>三级封锁协议：在一级封锁协议的基础上，增加事务T在读取数据R之前必须对其加S锁，直到事务结束才释放</p>
-<img src="/.online//06/03/1/image-20220603170851466-1654254349208.png" class title="image-20220603170851466">
+<img src="https://s1.328888.xyz/2022/06/20/sQECv.png" alt="sQECv.png" border="0" />
+
+
 
 
 
@@ -479,13 +489,13 @@
 <h2 id="死锁的诊断和解除"><a href="#死锁的诊断和解除" class="headerlink" title="死锁的诊断和解除"></a>死锁的诊断和解除</h2><p>死锁诊断方法：超时法、事务等待图法</p>
 <p>超时法：设定时间，若一个事务等待时间超过了规定的时限，就认为发生了死锁</p>
 <p>等待图法：用有向图$G&#x3D;(T,U)$,T为结点集合（事务）、U为边集合（事务等待的情况），如下即为死锁</p>
-<img src="/.online//06/03/1/image-20220603173026077-1654254349208.png" class title="image-20220603173026077">
+<img src="https://s1.328888.xyz/2022/06/20/sUQyJ.png" alt="sUQyJ.png" border="0" />
 
 <p>解决死锁的方法：选择一个代价最小的事务，将其撤销，释放它所持有的所有锁</p>
 <h2 id="串行调度"><a href="#串行调度" class="headerlink" title="串行调度"></a>串行调度</h2><p>可串行化调度：多个事务的并发执行是正确的，当且仅当其结果与按照某一次序串行执行这些事务时的结果相同</p>
 <p>可串行性是并发事务正确调度的准则，一个给定的并发调度，当且仅当它是可串行化的，就认为是正确调度</p>
 <p>冲突操作：不同的事务对同一个数据的读写操作和写写操作</p>
-<img src="/.online//06/03/1/image-20220603183732478-1654254349208.png" class title="image-20220603183732478">
+<img src="https://s1.328888.xyz/2022/06/20/sUUdF.png" alt="sUUdF.png" border="0" />
 
 <p>一个调度Sc在保证冲突操作次序不变的情况下，通过交换两个事务不冲突操作的次序得到另一个调度Sc’，如果Sc’是串行的，称调度Sc为 <strong>冲突可串行化</strong> 的调度</p>
 <blockquote>
@@ -494,7 +504,7 @@
 <h2 id="两端锁协议"><a href="#两端锁协议" class="headerlink" title="两端锁协议"></a>两端锁协议</h2><p>第一阶段获取锁：事务可以 申请 任何数据项上的任何锁，但是不能释放任何锁</p>
 <p>第二阶段释放锁：事务可以 释放 任何数据项上的任何锁，但是不能申请任何锁</p>
 <p>遵守两段锁协议的并发调度都是可串行化的</p>
-<img src="/.online//06/03/1/image-20220603184809366-1654254349208.png" class title="image-20220603184809366">
+<img src="https://s1.328888.xyz/2022/06/20/sUeKW.png" alt="sUeKW.png" border="0" />
 
 
 
@@ -546,7 +556,10 @@
     <a href="/2022/06/02/1/" rel="prev" title="自建博客步骤">
       <i class="fa fa-chevron-left"></i> 自建博客步骤
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/20/3/" rel="next" title="数据库例题">
+      数据库例题 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -621,7 +634,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

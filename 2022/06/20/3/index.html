@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zyhhnu.online","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据库例题 数据库原理例题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库例题">
+<meta property="og:url" content="http://zyhhnu.online/2022/06/20/3/index.html">
+<meta property="og:site_name" content="FXK的博客">
+<meta property="og:description" content="数据库例题 数据库原理例题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sQORC.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/06/20/sQcDM.png">
+<meta property="article:published_time" content="2022-06-20T14:49:26.000Z">
+<meta property="article:modified_time" content="2022-06-20T15:26:45.649Z">
+<meta property="article:author" content="FXK">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.328888.xyz/2022/06/20/sQORC.png">
+
+<link rel="canonical" href="http://zyhhnu.online/2022/06/20/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据库例题 | FXK的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FXK的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zyhhnu.online/2022/06/20/3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s1.328888.xyz/2022/06/01/5SCKB.jpg">
+      <meta itemprop="name" content="FXK">
+      <meta itemprop="description" content="我穿越千山跋涉万水寻她，带着一朵温柔的花">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXK的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库例题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-20 22:49:26 / 修改时间：23:26:45" itemprop="dateCreated datePublished" datetime="2022-06-20T22:49:26+08:00">2022-06-20</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数据库例题"><a href="#数据库例题" class="headerlink" title="数据库例题"></a>数据库例题</h1><blockquote>
+<p>数据库原理例题</p>
+</blockquote>
+<span id="more"></span>
+
+<p><strong>1：试述关系数据库系统中视图的定义，引进视图的概念有什么好处？视图和基本表之间有什么区别和联系？</strong></p>
+<p>定义：</p>
+<ul>
+<li>视图是从一个或者几个基本表（视图）中导出的表，它与基本表不同，是一个虚表</li>
+<li>数据库中只存放视图的定义，不存放视图对应的数据</li>
+</ul>
+<p>引进视图的好处：</p>
+<ul>
+<li>视图能简化用户操作</li>
+<li>视图能使用户多种角度看待数据</li>
+<li>视图对重构数据库提供了一定程度的逻辑独立性</li>
+<li>视图能够对机密数据提供安全保护</li>
+</ul>
+<p>视图和基本表之间的联系和区别</p>
+<p>联系：</p>
+<ul>
+<li>视图是从一个或者多个基表（视图）中导出的；</li>
+<li>一旦基本表中的数据发生变化，视图查询的数据也就随之改变了</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li><p>视图是一个虚表，数据库只保存视图的定义，不存放视图对应的数据；数据库保存基表中的数据</p>
+</li>
+<li><p>视图更像是一个窗口，透过它可以看到数据库中特定的数据以及变化</p>
+</li>
+</ul>
+<hr>
+<p><strong>2：什么是概念模型？试述概念模型的作用</strong></p>
+<p>概念模型概念：概念模型，也称为信息模型，是按用户观点来对数据和信息建模，主要用于数据库的设计</p>
+<p>概念模型的作用：</p>
+<ul>
+<li><p>概念模型实际上是从现实世界到机器世界的一个中间层次。</p>
+</li>
+<li><p>概念模型用于信息世界的建模，是现实世界到信息世界的第一层抽象，是数据库设计人员进行数据库设计的有力工具，也是数据库设计人员和用户之间交流的语言</p>
+</li>
+</ul>
+<hr>
+<p><strong>3：外模式&#x2F;模式&#x2F;内模式</strong></p>
+<p><strong>模式</strong></p>
+<blockquote>
+<p><strong>描述的是数据的全局逻辑结构</strong>，所有用户的公共数据视图；</p>
+<ul>
+<li><p>一个数据库只有一种模式</p>
+</li>
+<li><p>作为数据库的中间层，既不涉及数据的物理存储细节和硬件环境，</p>
+</li>
+<li><p>与具体应用程序、应用开发工具和高级程序设计语言无关</p>
+</li>
+<li><p>数据库管理系统提供模式数据定义语言（模式DDL）来严格定义模式</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>外模式</strong></p>
+<blockquote>
+<p>外模式也称为子模式或者用户模式，是数据库用户的数据视图，<strong>描述的是数据的局部逻辑结构</strong></p>
+<ul>
+<li><p>外模式通常是模式的子集</p>
+</li>
+<li><p>一个数据库可以有多个外模式</p>
+</li>
+<li><p>一个外模式可以被一个用户的多个应用系统所使用，但是一个应用程序智能使用一个外模式</p>
+</li>
+<li><p>数据库管理系统提供外模式数据定义语言（外模式DDL）来严格定义外模式</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>内模式</strong></p>
+<blockquote>
+<p>内模式也称为存储模式，是<strong>数据物理结构和存储方式的描述</strong></p>
+<ul>
+<li>一个数据库只有一个内模式</li>
+<li>是对数据物理结构和存储方式的描述：比如索引方式是B+树索引还是hash索引、存储方式是升序或者降序、数据是否压缩</li>
+</ul>
+</blockquote>
+<hr>
+<p><strong>4：什么叫数据与程序的物理独立性？什么叫数据与程序的逻辑独立性？为什么数据库系统具有数据与程序的独立性？</strong></p>
+<ul>
+<li><p>数据与程序的逻辑独立性：用户的应用程序和数据库的逻辑结构是相互独立的</p>
+<ul>
+<li>当模式改变时，数据库管理员对外模式&#x2F;模式映像做出改变，可以使外模式不变。应用程序是依据外模式编写的，从而应用程序不用修改，保证了数据与程序的逻辑独立性</li>
+</ul>
+</li>
+<li><p>数据与程序的物理独立性：用户的应用程序和数据库中数据的物理存储是相互独立的</p>
+<ul>
+<li>当数据库的存储方式发生改变，数据库管理员对模式&#x2F;内模式映像做出改变，可以使模式保持不变，从而应用程序也不必改变，保证了数据与程序的物理独立性</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>5：自然连接和等值连接</strong></p>
+<p>连接运算符是“&#x3D;”的连接运算称为等值连接。它是从关系 R 与 S 的广义笛卡尔积中选取 A，B 属性值相等的那些元组 </p>
+<p>自然连接是一种特殊的等值连接，它要求在两个关系中进行比较的分量必须是同名的属性组，在结果中把重复的属性列去掉</p>
+<hr>
+<p><strong>6：自主存取控制和强制存取控制</strong></p>
+<p>自主存取控制方法：定义各个用户对不同数据对象的存取权限。当用户对数据库访问时首先检查用户的存取权限，防止不合法用户对数据库的存取。 </p>
+<p>强制存取控制方法：每一个数据对象被（强制地）标以一定的密级，每一个用户也被（强制地）授予某一个级别的许可证。系统规定只有具有某一许可证级别的用户才能存取某一 个密级的数据对象。</p>
+<hr>
+<p><strong>7：什么是审计功能，为什么要提供审计功能</strong></p>
+<p>审计功能是指 DBMS 的审计模块在用户对数据库执行操作的同时把所有操作自动记录到系统的审计日志中。</p>
+<p>利用数据库的审计功能：DBA 可以<strong>根据</strong>审计跟踪的信息，<strong>重现</strong>导致数据库现有状况的一系列事件，<strong>找出</strong>非法存取数据的人、时间和内容等。</p>
+<hr>
+<p><strong>8：如何判断一个关系是否属于第三范式</strong></p>
+<p>第一范式：属性不可分，并且表中不含表的，通常认为是第一范式，第一范式就是一张不可分的二维表</p>
+<p>第二范式：在1NF的基础上，判断是否存在非主属性对码的部分依赖，如果存在，就不属于2NF</p>
+<p>第三范式：在2NF的基础上，判断是否存在非主属性对于码的传递依赖，如果存在，就不属于3NF</p>
+<p>BCNF：在3NF的基础上，判断决定因素中是否包含码，决定因素中不包含码就不属于BCNF</p>
+<hr>
+<p><strong>9：什么是数据字典，数据字典中通常有哪些内容</strong></p>
+<p>数据字典是关系数据库管理系统内部的一组系统表，记录了数据库中的所有定义信息</p>
+<p><strong>包括：</strong>关系模式定义、视图定义、索引定义、完整性约束定义、各类用户对数据库的操作权限、统计信息等</p>
+<hr>
+<p><strong>8：函数依赖例题，求候选码，求闭包的过程</strong></p>
+<p>求候选码的简单方法方法：<br>（1）如果有属性不在函数依赖集中出现，那么它必须包含在候选码中；<br>（2）如果有属性<strong>不在</strong>函数依赖集中任何<strong>函数依赖的右边</strong>出现，那么它必须包含在候选码中；<br>（3）如果有属性<strong>只在函数依赖集</strong>的<strong>左边</strong>出现，则该属性一定包含在候选码中。<br>（4）如果有属性或属性组能<strong>唯一标识元组</strong>，则它就是候选码；</p>
+<p>按以下步骤求候选键：<br>1.只在依赖关系右部出现的属性，不属于候选码;<br>2.只在依赖关系左部出现的属性，一定存在于某候选码当中;<br>3.外部属性一定存在于任何候选码当中;<br>4.其他属性逐个与2,3的属性组合，求属性闭包，直至X的闭包等于U,若等于U,则X为候选码。</p>
+<hr>
+<p><strong>9：部分函数依赖和完全函数依赖</strong></p>
+<p>部分函数依赖：{学号，课号}-&gt;成绩，学号和课号一起能够决定成绩，但只有学号或者课程号无法决定成绩</p>
+<p>完全函数依赖：{学号，课号}-&gt;姓名，只有学号就能决定姓名，课程号是多余的</p>
+<hr>
+<p><strong>10：物理优化和代数优化</strong></p>
+<p>物理优化：根据系统所提供的存取路径，选择合理的存取策略(例如选用顺序扫描还是选择索引)</p>
+<p>代数优化：对于关系代数的优化，通过对关系代数的等价变换提高查询效率</p>
+<hr>
+<p><strong>11：检查点</strong></p>
+<p>检查点是DMBS强制使内存中DB Buffer中的内容与数据库DB中的内容保持一致的时刻点</p>
+<p>在检查点之前提交：无操作；在检查点之前提交，不必执行REDO和UNDO操作</p>
+<p>在检查点之后故障点之前提交：REDO；操作对于数据库的修改在故障发生时可能还在缓冲区内，尚未写入数据库，需要REDO</p>
+<p>在故障点之后提交：撤销；在故障发生时还未完成，予以撤销</p>
+<hr>
+<p><strong>12：介质故障的处理办法</strong></p>
+<p>用最新的备份文件替换发生故障的数据库文件</p>
+<p>当前未执行完的事务撤销，当前执行完的事务需要按照运行日志记录的次序重做</p>
+<hr>
+<p><strong>13：并发导致不一致性的三个原因</strong></p>
+<p>丢失更新</p>
+<p>不能重复读</p>
+<p>读脏数据</p>
+<hr>
+<p><strong>14：检查点内容应该包含什么？检查点的好处是什么？</strong></p>
+<p>建立检查点时刻所有正在执行的事务清单</p>
+<p>这些事务最近一个日志记录的地址</p>
+<p>使用检查点的方法是可以改善恢复效率，不需要重新搜索整个日志文件和重做许多已经写入数据库的操作</p>
+<hr>
+<p><strong>15：故障的恢复步骤</strong></p>
+<p>1）事务故障的恢复步骤</p>
+<p>恢复系统利用日志文件撤销(UNDO)事务对于数据库进行的修改，具体来说就是<code>反向扫描日志文件，并执行操作的逆操作</code></p>
+<p>2）系统故障恢复步骤</p>
+<p>撤销故障发生时未完成的事务，重做已完成的事务</p>
+<p>正向扫描日志文件，找出在故障发生前已提交的事务，将其事务标识记入重做队列；找出在故障发生时尚未完成的事务，将其事务标识记入撤销队列</p>
+<p>对于撤销队列中的各个事务进行撤销UNDO处理，对于重做队列中的各个事务进行重做REDO处理</p>
+<p>3）介质故障恢复步骤</p>
+<p>用最新的备份文件替换发生故障的数据库文件</p>
+<p>当前未执行完未提交的事务撤销，当前执行完已经提交的事务按照日志文件记录的次序依次重做</p>
+<hr>
+<p><strong>16:什么是死锁，怎么解决死锁</strong></p>
+<p>事务T1封锁了数据R1、事务T2封锁了数据R2，而T1请求数据R2、T2请求数据R1；</p>
+<p>T1持有R1，T2持有R2，而相互等待对方数据，从而导致了死锁</p>
+<p>解决死锁的办法：选择T1、T2中代价最小的事务进行撤销操作，就能解决死锁问题</p>
+<hr>
+<p><strong>17：封锁协议是什么？</strong></p>
+<p>运用X锁和S锁这两种基本封锁对数据对象加锁时，需要规定一些规则，如何时申请X锁或S锁，持锁时间、何时释放等，这些规则称为封锁协议</p>
+<p>一级封锁协议：事务T在修改数据R之前必须对其加X锁，直到事务结束才释放</p>
+<p>二级封锁协议：在一级封锁协议的基础上，增加事务T在读取数据R前必须先对其加S锁，读完后即可释放S锁</p>
+<p>三级封锁协议：在一级封锁协议的基础上，增加事务T在读取数据R之前必须对其加S锁，直到事务结束才释放</p>
+<img src="https://s1.328888.xyz/2022/06/20/sQORC.png" alt="sQORC.png" border="0" />
+
+<hr>
+<p><strong>18：数据库设计的六个阶段</strong></p>
+<p>需求收集和分析：数据字典、全系统中数据项、数据结构、数据流、数据存储的描述</p>
+<p>概念结构设计：概念模型（E-R图）、数据字典</p>
+<p>逻辑结构设计：关系数据库或者非关系数据库</p>
+<p>物理结构设计：存储结构和存取方法</p>
+<p>数据库实施：创建数据库模式装入数据和试运行</p>
+<p>数据库运行和维护：性能检测、转储&#x2F;恢复、数据库重组和重构</p>
+<hr>
+<p><strong>19：数据库的完整性概念与数据库的安全性概念有什么区别和联系？</strong></p>
+<p>数据的完整性和安全性是两个不同的概念，但是有一定的联系。</p>
+<p>前者是为了防止数据库中存在不符合语义的数据，防止错误信息的输入和输出，即所谓垃圾进垃圾出所造成的无效操作和错误结果。</p>
+<p>后者是保护数据库防止恶意的破坏和非法的存取。也就是说，安全性措施的防范对象是非法用户和非法操作，完整性措施的防范对象是不合语义的数据。</p>
+<hr>
+<p><strong>例题1：</strong></p>
+<blockquote>
+<p>$R&lt;U,F&gt;,U&#x3D;(A,B,C,D,E,G),F&#x3D;{AB\to C,CD\to E,E\to A.A\to G}$</p>
+<p>求候选码</p>
+</blockquote>
+<ul>
+<li>G只在函数依赖右边出现，G不为候选码；</li>
+<li>B、D只在函数依赖左边出现，一定为候选码</li>
+<li>B和D单独求闭包，并不能求出U；且BD也不能闭包求出U</li>
+<li>BD可以和A、C、E组合<ul>
+<li>ABD：$AB\to C,CD\to E,A\to G$ABD的闭包为ABDCEG&#x3D;U</li>
+<li>BDC：$CD\to E,E\to A,A\to G$，BDC的闭包为BDCEAG&#x3D;U</li>
+<li>BDE：$E\to A,A\to G,AB\to C$，BDE的闭包为BDEAGC&#x3D;U</li>
+</ul>
+</li>
+</ul>
+<p>因为(ABD)、(BCD)、(BDE)的闭包都是ABCDEG，候选码有3个分别是ABC、BCD和BDE</p>
+<hr>
+<p><strong>例题2：</strong></p>
+<blockquote>
+<p>关系模式 $R(A,B,C,D,E,F)$</p>
+<p>其函数依赖集为：$F&#x3D;{E→D,C→B,CE→F,B→A}$</p>
+</blockquote>
+<p>1：指出 R 的所有候选码并说明原因；</p>
+<ul>
+<li>只在依赖关系右部出现的为D、F、A，这些属性必不包含在码中</li>
+<li>只在依赖关系左部出现的为E、C，这些属性包含在码中</li>
+<li>考虑单独的E，求E的闭包：{E,D}</li>
+<li>考虑单独的C，求C的闭包：{C,B,A}</li>
+<li>考虑CE，求CE的闭包：{A,B,C,D,E,F}</li>
+</ul>
+<p>R的候选码为CE</p>
+<p>2：R 最高属于第几范式，为什么?</p>
+<p>1NF：关系模式R中的所有属性都是不可分的基本数据项，就属于第一范式，一般的一张二维表就属于第一范式</p>
+<p>2NF：消除了非主属性对主属性的部分依赖，如果存在非主属性都主属性的部分依赖就只属于第一范式而不是第二范式</p>
+<p>3NF：消除了非主属性的主属性的传递依赖</p>
+<p>BCNF：在3NF的基础上，每个决定因素中都包含码</p>
+<p>R最高属于第一范式，因为存在部分依赖，${E-&gt;D,C-&gt;B}$</p>
+<p>3：分解 R 为 3NF</p>
+<p>首先分解为2NF，消除非主属性的部分依赖</p>
+<p>​	R1(E,D)、R2（C,B,A）、R3(C,E,F)</p>
+<p>分解为3NF，消除非主属性对主属性的传递依赖</p>
+<p>​	R1(E,D)、R2（C,B）、R3(C,E,F)、R4(B,A)</p>
+<hr>
+<p><strong>例题3：</strong></p>
+<blockquote>
+<p>已知关系 R(A, B, C, D), 有函数依赖集 F &#x3D; { A→C; B→D; BD→A }</p>
+</blockquote>
+<p>1）求出R的所有候选码</p>
+<ul>
+<li><p>只在依赖集右边出现的为C，C必不在码中</p>
+</li>
+<li><p>只在依赖集左边出现的为B，B在码中</p>
+</li>
+<li><p>求B的闭包：{B,D,A,C}&#x3D;U，B为候选码</p>
+</li>
+<li><p>求A的闭包：{A,C}</p>
+</li>
+<li><p>求D的闭包：{D}</p>
+</li>
+</ul>
+<p>R的候选码为B，非主属性A,C,D</p>
+<p>2）判断R是否满足第三范式</p>
+<p>满足2NF，因为非主属性都完全依赖于码</p>
+<p>不满足3NF，因为存在传递依赖</p>
+<p>3）如果不满足，对其进行分解， 直至满足 3NF</p>
+<p>R2(B,D,A)、R3(A,C)</p>
+<hr>
+<p><strong>例题4</strong></p>
+<p>设关系模式 R（A，B，C，D，E）F是依赖集，F&#x3D;{ AB→C，BC→A，AC →B，D→E }</p>
+<p>试写出 R 的所有候选码，并说明理由</p>
+<ul>
+<li>只出现在依赖关系右边，E不包含在候选码中</li>
+<li>只出现在依赖关系左边，D包含在候选码中</li>
+<li>D闭包{D,E}</li>
+<li>考虑DA，DA闭包{D,E,A}</li>
+<li>考虑DAB，DAB闭包{D,E,A,B,C}</li>
+<li>DAC,DBC的闭包都为{D,E,A,B,C}</li>
+<li>R的候选码为ABD、ACD、BCD</li>
+</ul>
+<hr>
+<p><strong>例题6：</strong></p>
+<p>设有关系 R(W, X, Y, Z)，依赖关系 F&#x3D;{X-&gt;Z，WX-&gt;Y}。判断该关系模式符合第几范式，并说明理由。</p>
+<ul>
+<li>WX主属性，ZY非主属性</li>
+<li>候选码为WX</li>
+<li>存在X-&gt;Z，存在非主属性对于码的部分依赖关系，符合第一范式</li>
+</ul>
+<hr>
+<p><strong>例题7</strong></p>
+<p>设有关系 R(X,Y,Z)满足依赖关系 F&#x3D;{Y→Z，XZ→Y}。该关系最高 达到第几范式（最高考虑到 BC 范式）？并说明理由。（10 分）</p>
+<ul>
+<li>X只在依赖关系左边出现，包含在主码中</li>
+<li>X闭包：{X}</li>
+<li>考虑XY，XY闭包：{XYZ}</li>
+<li>考虑XZ，XZ闭包：{XYZ}</li>
+</ul>
+<p>候选码为XY,XZ，主属性为X,Y,Z</p>
+<p>Y-&gt;Z中，决定因素中不包含码，最高3NF</p>
+<hr>
+<p><strong>例题8</strong></p>
+<p>设有函数依赖集 F&#x3D;{AB→CE，A→C，GP→B，EP→A，CDE→P， HB→P，D→HG，ABC→PG}，求属性集 D 关于 F 的闭包 $(D)_{F}^{+}$。 </p>
+<p>X0&#x3D;D	X1&#x3D;DHG	</p>
+<p>$(D)_{F}^{+}$&#x3D;DHG </p>
+<hr>
+<p><strong>例题9</strong></p>
+<p>设有关系模式 R（X, Y, Z），依赖集 F&#x3D;{XY→Z, XZ→Y, Y→Z}，判断 R 最高满足第几范式并说明理由。（8 分）</p>
+<p>X只在依赖关系左边出现，X为主属性，包含在候选码中，候选码为XY 、XZ</p>
+<p>X，Y，Z都为主属性</p>
+<p>2NF：每一个非主属性完全依赖于任何一个候选码</p>
+<p>3NF：在2NF的基础上，非主属性不传递依赖于码</p>
+<p>BCNF：每一个决定因素都包含码</p>
+<p>最高属于3NF</p>
+<hr>
+<p><strong>9：SQL语句</strong></p>
+<p><strong>例题一：</strong></p>
+<img src="https://s1.328888.xyz/2022/06/20/sQcDM.png" alt="sQcDM.png" border="0" />
+
+
+
+<p>1：JNO&#x3D;’J2’	使用的	PNAME	和	QTY</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> P.PNAME, SPJ.QTY <span class="keyword">FROM</span> P,SPJ</span><br><span class="line"><span class="keyword">WHERE</span> SPJ.JNO<span class="operator">=</span><span class="string">&#x27;J2&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2：S.CITY&#x3D;’上海’  供应的PNO</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> SPJ.PNO <span class="keyword">FROM</span> SPJ,S</span><br><span class="line"><span class="keyword">WHERE</span> S.SNO<span class="operator">=</span>SPJ.SNO <span class="keyword">AND</span> S.CITY<span class="operator">=</span><span class="string">&#x27;上海&#x27;</span></span><br><span class="line">或者</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> PNO <span class="keyword">FROM</span> SPJ </span><br><span class="line"><span class="keyword">WHERE</span> SNO <span class="keyword">IN</span>(<span class="keyword">SELECT</span> SNO <span class="keyword">FROM</span> S <span class="keyword">WHERE</span> CITY<span class="operator">=</span><span class="string">&#x27;上海&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>3：S.CITY&#x3D;’上海’ ，找出使用上海产的零件的工程名称</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> JNAME <span class="keyword">FROM</span> J <span class="keyword">WHERE</span> JNO <span class="keyword">IN</span></span><br><span class="line">(<span class="keyword">SELECT</span> JNO <span class="keyword">FROM</span> SPJ,S <span class="keyword">WHERE</span> S.CITY<span class="operator">=</span><span class="string">&#x27;上海&#x27;</span> <span class="keyword">AND</span> S.SNO<span class="operator">=</span>SPJ.SNO);</span><br></pre></td></tr></table></figure>
+
+<p>4：没有使用天津产的零件（S.city&#x3D;’天津’）的工程号码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> JNO <span class="keyword">FROM</span> J <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> JNO <span class="keyword">FROM</span> SPJ,S <span class="keyword">WHERE</span> S.SNO<span class="operator">=</span>SPJ.SNO <span class="keyword">AND</span> S.CITY<span class="operator">=</span><span class="string">&#x27;天津&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>5：全部红色零件改为蓝色</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> P <span class="keyword">SET</span> COLOR<span class="operator">=</span><span class="string">&#x27;蓝&#x27;</span> <span class="keyword">WHERE</span> COLOR<span class="operator">=</span><span class="string">&#x27;红&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>6：由S5供给J4的零件P6改为由S3供应</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> SPJ <span class="keyword">SET</span> SNO<span class="operator">=</span><span class="string">&#x27;S3&#x27;</span> <span class="keyword">WHERE</span> SNO<span class="operator">=</span><span class="string">&#x27;S5&#x27;</span> <span class="keyword">AND</span> JNO<span class="operator">=</span><span class="string">&#x27;J4&#x27;</span> <span class="keyword">AND</span> PNO<span class="operator">=</span><span class="string">&#x27;P6&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>7：从供应商关系中删除S2记录，并从供应情况关系中删除相应记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> SPJ <span class="keyword">WHERE</span> SNO<span class="operator">=</span><span class="string">&#x27;S2&#x27;</span>;</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> S <span class="keyword">WHERE</span> SNO<span class="operator">=</span><span class="string">&#x27;S2&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>8：将（S2,J6,P4,200）插入供应情况关系中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> SPJ(SNO,PNO,JNO,QTY)<span class="keyword">VALUES</span>(S2,J6,P4,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+
+<p>9：创建视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> XXX <span class="keyword">AS</span> <span class="keyword">SELECT</span> xxx <span class="keyword">FROM</span> XXX <span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION;</span><br></pre></td></tr></table></figure>
+
+<p>10：赋予权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(X) <span class="keyword">ON</span> XXX <span class="keyword">TO</span> XXX <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION; </span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>例题二</strong></p>
+<p>设属性集 X&#x3D;{B,G}，函数依赖集 F 函数依赖组成： {AC→PE, PG→A, B→CE, A→P, A→B, GC→A, PAB→G, AG→BG, ABCP →H}</p>
+<p>求 X 关于 F 的闭包。</p>
+<p>{B,G}、{B,C,E,G}、{B,C,E,G,A}、{B,C,E,G,A,P}、{B,C,E,G,A,P,H}</p>
+<hr>
+<p><strong>例题三</strong></p>
+<p>设有</p>
+<ul>
+<li>学生表 Student(Sno, Sname, Ssex, Sage, Sdept)</li>
+<li>课程表 Course(Cno, Cname, Cpno,  Ccredit)</li>
+<li>学生选课表 SC(Sno,Cno,Grade)。</li>
+</ul>
+<p>用 SQL 语言： </p>
+<p>（1）建立一个视图 V-SC（Sno, Sname, Cno, Cname，Grade）</p>
+<p>（2）从视图 V-SC 上查询平均成绩在 90 分以上的学生姓名（Sname）、课程名（Cname） 及成绩（Grade）</p>
+<p>1）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> V<span class="operator">-</span>SC <span class="keyword">AS</span> <span class="keyword">SELECT</span> Sno,Sname,Cno,Cname,Grade <span class="keyword">FROM</span> Student,Course,SC;</span><br></pre></td></tr></table></figure>
+
+<p>2）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname,Cname,Grade <span class="keyword">FROM</span> V<span class="operator">-</span>SC </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno <span class="keyword">HAVING</span> <span class="built_in">AVG</span>(Grade)<span class="operator">&gt;=</span><span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>例题四：</strong></p>
+<p>设有关系模式如下：</p>
+<p>S(Sno, Sname, Age, Sex)，学生表：Sno 代表学号，Sname 代表学生姓名，Age 代表学生年龄， Sex 代表学生性别</p>
+<p>SC(Sno, Cno, Grade)，选课表：Sno 代表学号，Cno 代表课程号，Grade 代表成绩</p>
+<p>C(Cno, Cname, Teacher)，课程表：Cno 代表课程号，Cname 代 表课程名，Teacher 代表任课教师姓名</p>
+<p>1、查询平均成绩大于 85 分的学生的姓名及其平均成绩（5 分）。 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sname,<span class="built_in">AVG</span>(Grade) <span class="keyword">FROM</span> S,SC</span><br><span class="line"><span class="keyword">WHERE</span> S.Sno<span class="operator">=</span>SC.Sno</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Sno <span class="keyword">HAVING</span> <span class="built_in">AVG</span>(Grade)<span class="operator">&gt;</span><span class="number">85</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2、把三个表的查询和插入权限授予用户张明，并允许张明进一步 把这些权限授予其他用户（5 分）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">INSERT</span>,<span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> S,SC,C <span class="keyword">TO</span> 张明 <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION；</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>例5</strong></p>
+<p>书店（书店编号，书店名，地址） </p>
+<p>图书（书号，书名，定价） </p>
+<p>图书馆（馆号，馆名，城市，电话）</p>
+<p>图书发行（馆号，书号，书店号，数量） </p>
+<p>（1）用 SQL 语句查询已发行图书中最贵的图书的书名和定价。（5 分） </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 书名,定价 <span class="keyword">FROM</span> 图书,图书发行 <span class="keyword">WHERE</span> 定价<span class="operator">=</span></span><br><span class="line">(<span class="keyword">SELECT</span> <span class="built_in">MAX</span>(定价) <span class="keyword">FROM</span> 图书,图书发行 <span class="keyword">WHERE</span> 图书.书号<span class="operator">=</span>图书发行.书号)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>（2）写出以下 SQL 语句的含义（查的是什么？）（5 分） </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 馆名 <span class="keyword">FROM</span> 图书馆 </span><br><span class="line"><span class="keyword">WHERE</span> 馆号 <span class="keyword">IN</span>  (<span class="keyword">SELECT</span> 馆号 <span class="keyword">FROM</span> 图书发行 <span class="keyword">WHERE</span> 书号 <span class="keyword">IN</span>  （<span class="keyword">SELECT</span> 书号 <span class="keyword">FROM</span> 图书 <span class="keyword">WHERE</span> 书名<span class="operator">=</span>’数据库系统概念’））；</span><br></pre></td></tr></table></figure>
+
+<p>查询：发行数据库系统概念图书的图书馆馆名</p>
+<hr>
+<p><strong>例6</strong></p>
+<p>学生表：Student （Sno，Sname，Sex，Sage，Sdept） </p>
+<p>课程表：Course（Cno，Cname，Ccredit） </p>
+<p>学生选课表：SC（Sno，Cno，Grade）</p>
+<p>找出每个学生超过他自己选修课程平均成绩的课程号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Cno <span class="keyword">FROM</span> SC X </span><br><span class="line"><span class="keyword">WHERE</span> Grade<span class="operator">&gt;</span> (</span><br><span class="line">    <span class="keyword">SELECT</span>  <span class="built_in">AVG</span>(Grade) <span class="keyword">FROM</span> SC Y </span><br><span class="line">    <span class="keyword">WHERE</span> Y.Sno<span class="operator">=</span>X.Sno</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>建立计科系学生的视图 CS_Student，包括学号、姓名、性别、年龄，并要求进行 插入和修改操作时仍需保证该视图只有计科系的学生；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> CS_Student <span class="keyword">AS</span> <span class="keyword">SELECT</span> Sno,Sname,Sex,Sage <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> Sdept<span class="operator">=</span><span class="string">&#x27;计科系&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION;</span><br></pre></td></tr></table></figure>
+
+<p>通过计科系学生视图 CS_Student 修改数据，把学号为“S201608101”的学生姓名改为王 小平；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> CS_Student <span class="keyword">SET</span> Sname<span class="operator">=</span><span class="string">&#x27;王小平&#x27;</span> <span class="keyword">WHERE</span> Sno<span class="operator">=</span><span class="string">&#x27;S201608101&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>DDL：数据库模式定义语言，关键字：create</p>
+<p>DML：数据操纵语言，关键字：Insert、delete、update</p>
+<p>DCL：数据库控制语言 ，关键字：grant、remove</p>
+<p>DQL：数据库查询语言，关键字：select</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>FXK
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zyhhnu.online/2022/06/20/3/" title="数据库例题">http://zyhhnu.online/2022/06/20/3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/database/" rel="tag"><i class="fa fa-tag"></i> database</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/03/1/" rel="prev" title="数据库复习">
+      <i class="fa fa-chevron-left"></i> 数据库复习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BE%8B%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">数据库例题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FXK"
+      src="https://s1.328888.xyz/2022/06/01/5SCKB.jpg">
+  <p class="site-author-name" itemprop="name">FXK</p>
+  <div class="site-description" itemprop="description">我穿越千山跋涉万水寻她，带着一朵温柔的花</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zyh-hnu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zyh-hnu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zyh_20222022@gmail.com" title="E-Mail → mailto:zyh_20222022@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2022-06 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FXK</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
